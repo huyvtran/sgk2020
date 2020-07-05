@@ -53,5 +53,22 @@ namespace TMSAPI.Controllers
             }
             return res;
         }
+
+        [HttpGet]
+        [Route("delete/{id}")]
+        public async Task<ServiceResult> Delete(int id)
+        {
+            var res = new ServiceResult();
+            try
+            {
+                res.Success = (this.BL as ISubjectBL).Delete(id);
+            }
+            catch (Exception ex)
+            {
+                res.Success = false;
+                throw;
+            }
+            return res;
+        }
     }
 }
